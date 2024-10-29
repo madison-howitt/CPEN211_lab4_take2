@@ -27,7 +27,7 @@ int index = binary_search(numbers,418,100);
 
 binary_search_loop:
     CMP R6, #-1
-    BNE binary_search_end    // if keyIndex != -1, break
+    BNE end_search          // if keyIndex != -1, break
     CMP R3, R4             // First we compare startIndex and endIndex
     BGT end_search         // If startIndex > endIndex, exit the loop
 
