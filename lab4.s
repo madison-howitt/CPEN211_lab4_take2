@@ -36,13 +36,11 @@ binary_search_loop:
 
     CMP R8, R1             // Compare numbers[middleIndex] with key
     BEQ found_key          // If equal, set keyIndex to be that location and exit loop
-
-    CMP R8, R1             // Check if numbers[middleIndex] > key
     BGT adjust_endIndex    // If greater, adjust the endIndex
 
     // Adjust the startIndex = middleIndex + 1
     ADD R3, R5, #1
-    B update_middleIndex
+    B adjust_endIndex
 
 adjust_endIndex:
     // Adjust the endIndex = middleIndex - 1
@@ -50,7 +48,7 @@ adjust_endIndex:
 
 update_middleIndex:
     // Update numbers[middleIndex] to -NumIters
-    RSB R9, R7, #0         // R9 = -NumIters
+    NEG R9, R7               // R9 = -NumIters
     STR R9, [R0, R5, LSL #2] // Store -NumIters at numbers[middleIndex]
 
     // Recalculate middleIndex = startIndex + (endIndex - startIndex) / 2
