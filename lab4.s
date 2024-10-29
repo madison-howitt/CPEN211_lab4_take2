@@ -40,7 +40,7 @@ binary_search_loop:
 
     // Adjust the startIndex = middleIndex + 1
     ADD R3, R5, #1
-    B adjust_endIndex
+    B update_middleIndex
 
 adjust_endIndex:
     // Adjust the endIndex = middleIndex - 1
@@ -48,8 +48,8 @@ adjust_endIndex:
 
 update_middleIndex:
     // Update numbers[middleIndex] to -NumIters
-    NEG R9, R7               // R9 = -NumIters
-    STR R9, [R0, R5, LSL #2] // Store -NumIters at numbers[middleIndex]
+    //NEG R9, R7               // R9 = -NumIters
+    //STR R9, [R0, R5, LSL #2] // Store -NumIters at numbers[middleIndex]
 
     // Recalculate middleIndex = startIndex + (endIndex - startIndex) / 2
     SUB R9, R4, R3         // R9 = endIndex - startIndex
